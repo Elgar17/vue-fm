@@ -2,6 +2,7 @@
 export default {
     state: {
         playUrl: "",
+        playing: true,
         playList: []
     },
     mutations: {

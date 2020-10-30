@@ -2,9 +2,18 @@
 export default {
     state: {
         // 控制 play-bar 与 play 组件的切换显示
-        playPageShow: true
+        playPageShow: false,
+        // 控制跳转搜索页面是隐藏 tab
+        hiddenTab: true,
     },
     mutations: {
+        // 控制切换播放页面与地下的 play-bar的状态
+        changePlayBar(state){
+            state.playPageShow = !state.playPageShow;
+        },
+        hiddenTab(state){
+            state.hiddenTab = !state.hiddenTab;
+        },
     },
     actions: {
     }

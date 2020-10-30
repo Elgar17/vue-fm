@@ -1,39 +1,59 @@
 <template>
-  <div class="play-bar">
+  <div class="play-bar" v-show="!$store.state.style.playPageShow">
     <div
       class="play-bar-image-container"
       @touchstart="showPlayPage"
       @click="showPlayPage"
     >
-      <img class="play-bar-image" v-lazy="coverImgUrl" />
+      <!-- v-lazy="coverImgUrl" -->
+      <img class="play-bar-image" />
     </div>
-    <p class="play-bar-text">{{title}}</p>
-    <img
+    <p class="play-bar-text">{{ title }}</p>
+    <!-- :src="playing ? iconPause : iconPlay" -->
+    <div class="play-bar-button" @touchend="tapButton" @click="tapButton">
+      <van-icon
+        v-show="!$store.state.play.playing"
+        name="play-circle"
+        class="play-bar-button"
+        size="25"
+        color="#ff4e4b"
+      />
+
+      <van-icon
+        v-show="$store.state.play.playing"
+        name="pause-circle"
+        class="play-bar-button"
+        size="25"
+        color="#ff4e4b"
+      />
+    </div>
+
+    <!-- <img
       class="play-bar-button"
-      :src="playing ? iconPause : iconPlay"
       @touchend="tapButton"
       @click="tapButton"
-    />
+    /> -->
+    <!-- <van-icon name="play-circle-o" /> -->
   </div>
 </template>
 
 <script>
 export default {
-    name:"paly-bar",
-    data(){
-        return{
-            title: "elgar1",
-            
-        }
+  name: "paly-bar",
+  data() {
+    return {
+      title: "elgar1",
+    };
+  },
+  methods: {
+    showPlayPage() {
+      console.log("shouPlayPage");
+      this.$store.commit('changePlayBar')
     },
-    methods:{
-        showPlayPage(){
-            console.log("shouPlayPage")
-        },
-        tapButton(){
-            console.log("tapButton")
-        }
-    }
+    tapButton() {
+      console.log("tapButton");
+    },
+  },
 };
 </script>
 
@@ -62,7 +82,7 @@ export default {
       height: 37.5px;
       border-radius: 5px;
       display: inline-block;
-    }   
+    }
   }
 }
 
