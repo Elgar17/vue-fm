@@ -7,16 +7,19 @@
       <van-swipe-item>4</van-swipe-item>
     </van-swipe>
     <h2>推荐歌单</h2>
+    <TuiJianGeDan/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
+import  TuiJianGeDan from "@/components/TuiJianGeDan.vue";
 
 export default {
   name: "Home",
-  components: {},
+  components: {
+    TuiJianGeDan
+  },
 };
 </script>
 
@@ -27,5 +30,8 @@ export default {
   line-height: 150px;
   text-align: center;
   background-color: #39a9ed;
+}
+h2{
+  text-align: center;
 }
 </style>

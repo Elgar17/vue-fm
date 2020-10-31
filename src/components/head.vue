@@ -1,5 +1,5 @@
 <template>
-  <div class="head">
+  <div class="head1">
     <div class="logo-box">
       <van-icon name="music" color="#ff4e4b" size="35" />
       <h1>VVFM</h1>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "head",
+  name: "head1",
   methods: {
     toSearch() {
       if(this.$route.path == "/search") return ;
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.head {
+.head1 {
   display: flex;
   justify-content: space-between;
   align-items: center;

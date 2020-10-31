@@ -25,6 +25,12 @@ Vue.use(SwipeItem);
 import { List } from 'vant';
 Vue.use(List);
 
+
+// grid 布局
+import { Grid, GridItem } from 'vant';
+Vue.use(Grid);
+Vue.use(GridItem);
+
 Vue.config.productionTip = false
 
 new Vue({
