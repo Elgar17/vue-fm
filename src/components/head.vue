@@ -4,7 +4,12 @@
       <van-icon name="music" color="#ff4e4b" size="35" />
       <h1>VVFM</h1>
     </div>
-    <van-search @click="toSearch" placeholder="搜索 歌曲" />
+    <van-search
+      @click="toSearch"
+      placeholder="搜索 歌曲"
+      v-model="inputVal"
+      @search="onSearch"
+    />
     <van-icon
       @click="cancle"
       v-show="!$store.state.style.hiddenTab"
@@ -17,9 +22,14 @@
 <script>
 export default {
   name: "head1",
+  data() {
+    return {
+      inputVal: "",
+    };
+  },
   methods: {
     toSearch() {
-      if(this.$route.path == "/search") return ;
+      if (this.$route.path == "/search") return;
       this.$router.push("/search");
       this.$store.commit("hiddenTab");
     },
@@ -27,6 +37,30 @@ export default {
       this.$router.push("/");
       this.$store.commit("hiddenTab");
     },
+    onSearch() {
+      if (this.$store.state.inputVal !== "") {
+        this.$http({
+          url: "/search?keywords=" + this.$store.state.inputVal,
+          method: "get",
+        }).then((res) => {
+          if (res.data.code === 200) {
+            this.$store.dispatch("setSearchList", res.data.result.songs);
+            console.log(this.$store.state.play.searchList);
+            //this.list = res.data.result.songs
+          }
+        });
+      } else {
+        alert("请输入歌名!");
+      }
+      // 清空
+      this.$store.commit('clearVal')
+    },
+  },
+  watch: {
+    inputVal(newVal) {
+      this.$store.commit("setInputValue", newVal);
+    },
+    
   },
 };
 </script>

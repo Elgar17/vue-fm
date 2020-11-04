@@ -2,6 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import http from './http.js'
+Vue.prototype.$http = http
+
 
 import { Image as VanImage } from 'vant';
 Vue.use(VanImage);
@@ -30,6 +33,11 @@ Vue.use(List);
 import { Grid, GridItem } from 'vant';
 Vue.use(Grid);
 Vue.use(GridItem);
+
+
+// 动作面板
+import { ActionSheet } from 'vant';
+Vue.use(ActionSheet);
 
 Vue.config.productionTip = false
 

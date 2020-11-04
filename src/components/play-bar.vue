@@ -6,7 +6,7 @@
       @click="showPlayPage"
     >
       <!-- v-lazy="coverImgUrl" -->
-      <img class="play-bar-image" />
+      <img class="play-bar-image" src="https://img.yzcdn.cn/vant/cat.jpeg"  />
     </div>
     <p class="play-bar-text">{{ title }}</p>
     <!-- :src="playing ? iconPause : iconPlay" -->
@@ -27,13 +27,7 @@
         color="#ff4e4b"
       />
     </div>
-
-    <!-- <img
-      class="play-bar-button"
-      @touchend="tapButton"
-      @click="tapButton"
-    /> -->
-    <!-- <van-icon name="play-circle-o" /> -->
+    
   </div>
 </template>
 

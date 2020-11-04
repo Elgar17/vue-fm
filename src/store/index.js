@@ -7,7 +7,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
+    inputVal: ""
+  },
+  mutations: {
+    setInputValue(state, val) {
+      state.inputVal = val;
+    },
+    clearVal(state) {
+      state.inputVal = ""
+    }
   },
   modules: {
     play,
