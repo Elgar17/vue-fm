@@ -6,36 +6,43 @@
         <span>误入秘密花园</span>
       </van-grid-item>
 
-      <van-grid-item>
-        <van-image src="https://img.yzcdn.cn/vant/apple-2.jpg" />
-        <span>误入秘密花园</span>
-      </van-grid-item>
-
-      <van-grid-item>
-        <van-image src="https://img.yzcdn.cn/vant/apple-3.jpg" />
-        <span>误入秘密花园</span>
-      </van-grid-item>
-
-      <van-grid-item>
-        <van-image src="https://img.yzcdn.cn/vant/apple-3.jpg" />
-        <span>误入秘密花园</span>
-      </van-grid-item>
-
-      <van-grid-item>
-        <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" />
-        <span>误入秘密花园入</span>
-      </van-grid-item>
-
-      <van-grid-item>
-        <van-image src="https://img.yzcdn.cn/vant/apple-3.jpg" />
-        <span>误入秘密花园</span>
+      <van-grid-item @click="toList">
+        <van-image :src="playList.coverImgUrl" />
+        <span>{{ playList.name }}</span>
       </van-grid-item>
     </van-grid>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "hot",
+  data() {
+    return {
+      playList: "",
+    };
+  },
+  created() {
+    this.$http({
+      url: "/playlist/detail?id=944971889",
+      method: "get",
+    }).then((res) => {
+      this.playList = res.data.playlist;
+    });
+  },
+  methods: {
+    toList() {
+      console.log(6)
+      this.$http({
+        url: "/playlist/detail?id=944971889",
+        method: "get",
+      }).then((res) => {
+        console.log(res.data.playlist)
+        this.playList = res.data.playlist;
+      });
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>

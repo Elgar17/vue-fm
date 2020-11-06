@@ -9,21 +9,16 @@
     </div>
     <router-view />
 
-    <!-- <audio ref="audio" :src="playUrl"></audio> -->
     <Play />
-    <!-- <PlayBar /> -->
   </div>
 </template>
 
 <script>
 import Headers from "@/components/head.vue";
-// import PlayBar from "@/components/play-bar.vue"; 
 import Play from "@/components/play.vue";
-// import { mapState } from "vuex";
 export default {
   name: "Home",
   components: {
-    // PlayBar,
     Play,
     Headers,
   },

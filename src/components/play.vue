@@ -42,7 +42,9 @@
         <div class="add">
           <van-icon name="star-o" size="20" color="#ff4e4b" />
         </div>
-        <div class="left">《</div>
+        <div class="left">
+          <img class="lastBtn" :src="lastBtn" />
+        </div>
         <div id="play-mu" @click="tapButton" class="play-mu">
           <van-icon
             v-show="!$store.state.play.playing"
@@ -57,7 +59,9 @@
             color="#ff4e4b"
           />
         </div>
-        <div class="right">》</div>
+        <div class="right">
+          <img class="nextBtn" :src="nextBtn" alt="" />
+        </div>
         <div class="share">
           <van-icon name="share-o" size="20" color="#ff4e4b" />
         </div>
@@ -124,6 +128,8 @@ export default {
       currentTime: 0,
       duraction: 0,
       percent: 0,
+      lastBtn: require("../assets/last.png"),
+      nextBtn: require("../assets/next.png"),
     };
   },
   methods: {
@@ -142,7 +148,7 @@ export default {
     pdateTime(e) {
       // 设置进度条
       var audio = this.$refs.audio;
-      this.$refs.jindutiao1.style.width=`${parseInt(
+      this.$refs.jindutiao1.style.width = `${parseInt(
         this.$refs.jindutiao.offsetWidth * (this.currentTime / audio.duration)
       )}px`;
       this.currentTime = e.target.currentTime;
@@ -208,6 +214,7 @@ export default {
 
 // <!-- 歌名 -->
 .sing-name-warapper {
+  overflow: hidden;
   padding: 20px 20px 0 20px;
 }
 
@@ -232,6 +239,7 @@ export default {
 
 /* 进度条 */
 #sing-time-box {
+  position: relative;
   width: 100%;
   height: 50px;
   padding: 10px 0;
@@ -262,6 +270,11 @@ export default {
   height: 70px;
   align-items: center;
   justify-content: space-around;
+}
+.lastBtn,
+.nextBtn{
+  height: 22px;
+  width: 22px;
 }
 
 .playListPage {

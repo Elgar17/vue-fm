@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="hotReview">
     <!-- 公告 -->
     <van-notice-bar
       left-icon="gift"
@@ -20,47 +20,21 @@
 
     <!-- 评论列表 -->
 
-
-    <div class="list-box">
+    <div class="list-box" v-for="(item,index) in list" :key="index">
       <div class="head-box">
         <van-image
           width="25"
           height="25"
           fit="cover"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
+          :src="item.simpleUserInfo.avatar"
         />
       </div>
       <div class="content-box">
-        <div class="title-box">
-          ELGAR生活
-        </div>
-        <p>愿你不辜负生活，不迷失方向。</p>
+        <div class="title-box">{{item.simpleUserInfo.nickname}}</div>
+        <p>{{item.content}}</p>
         <div class="like-box">
-          <van-icon name="share" color="#ff3a37" size="20" />
-          <span>123</span>
-          <van-icon name="good-job" color="#ff3a37" size="20" />
-        </div>
-      </div>
-      <van-divider />
-    </div>
-
-        <div class="list-box">
-      <div class="head-box">
-        <van-image
-          width="25"
-          height="25"
-          fit="cover"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
-        />
-      </div>
-      <div class="content-box">
-        <div class="title-box">
-          ELGAR生活
-        </div>
-        <p>总有一句打动你的心。</p>
-        <div class="like-box">
-          <van-icon name="share" color="#ff3a37" size="20" />
-          <span>123</span>
+          <!-- <van-icon name="share" color="#ff3a37" size="20" /> -->
+          <span>{{item.likedCount}}</span>
           <van-icon name="good-job" color="#ff3a37" size="20" />
         </div>
       </div>
@@ -70,7 +44,39 @@
 </template>
 
 
+<script>
+export default {
+  name: "Review",
+  data() {
+    return {
+      list: [],
+    };
+  },
+  created(){
+    this.gelist()
+  },
+  methods: {
+    gelist() {
+      this.$http({
+        url: "/comment/hotwall/list",
+        method: "get",
+      }).then((res) => {
+        if (res.data.code === 200) {
+          this.list = res.data.data;
+        }
+      });
+    },
+  },
+};
+</script>
+
+<style>
+</style>
+
 <style lang="less" scoped>
+.hotReview{
+  padding-bottom: 50px;
+}
 .notice-swipe {
   height: 40px;
   line-height: 40px;
@@ -85,7 +91,7 @@
   }
   .content-box {
     flex: 1;
-    .title-box{
+    .title-box {
       height: 25px;
       line-height: 25px;
       font-weight: bold;
@@ -93,13 +99,13 @@
       font-size: 14px;
     }
   }
-  .like-box{
+  .like-box {
     height: 25px;
     padding-right: 10px;
     display: flex;
     align-items: center;
-    justify-content:flex-end;
-    span{
+    justify-content: flex-end;
+    span {
       font-size: 18px;
       margin: 0 5px;
       line-height: 18px;

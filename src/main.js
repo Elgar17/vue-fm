@@ -28,6 +28,9 @@ Vue.use(SwipeItem);
 import { List } from 'vant';
 Vue.use(List);
 
+import { Lazyload } from 'vant';
+Vue.use(Lazyload);
+
 
 // grid 布局
 import { Grid, GridItem } from 'vant';
