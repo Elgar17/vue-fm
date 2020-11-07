@@ -11,6 +11,8 @@
       </van-swipe-item>
     </van-swipe>
 
+    <h2>最新音乐</h2>
+    <NewSong />
     <h2>推荐歌单</h2>
     <TuiJianGeDan />
   </div>
@@ -19,6 +21,7 @@
 <script>
 // @ is an alias to /src
 import TuiJianGeDan from "@/components/TuiJianGeDan.vue";
+import NewSong from "@/components/NewSong.vue";
 
 export default {
   name: "Home",
@@ -29,6 +32,7 @@ export default {
   },
   components: {
     TuiJianGeDan,
+    NewSong,
   },
   created() {
     this.getBenner();
@@ -43,6 +47,20 @@ export default {
           this.swiperData = data.data.banners;
         }
       });
+    },
+
+    // get newSong
+    getNewSong() {
+      // this.$http({
+      //   url: "personalized/newsong",
+      //   method: "get",
+      // }).then((res) => {
+      //   console.log(res.data)
+      //   if (res.data.code == 200) {
+      //     this.newSong = res.data.result;
+      //     console.log(this.newSong)
+      //   }
+      // });
     },
   },
 };

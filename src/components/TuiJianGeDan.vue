@@ -10,6 +10,11 @@
         <van-image :src="playList.coverImgUrl" />
         <span>{{ playList.name }}</span>
       </van-grid-item>
+
+      <van-grid-item @click="toList">
+        <van-image :src="playList.coverImgUrl" />
+        <span>{{ playList.name }}</span>
+      </van-grid-item>
     </van-grid>
   </div>
 </template>
@@ -32,12 +37,15 @@ export default {
   },
   methods: {
     toList() {
-      console.log(6)
+      console.log(6);
       this.$http({
-        url: "/playlist/detail?id=944971889",
+        url: "/playlist/subscribers",
         method: "get",
+        params: {
+          id: 944971889,
+        },
       }).then((res) => {
-        console.log(res.data.playlist)
+        console.log(res);
         this.playList = res.data.playlist;
       });
     },

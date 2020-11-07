@@ -10,7 +10,7 @@
           width="100%"
           fit="cover"
           height="300px"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
+          :src="song.picUrl? song.picUrl : 'https://img.yzcdn.cn/vant/cat.jpeg'"
         />
       </div>
       <!-- 歌名 -->
@@ -80,7 +80,7 @@
         @click="showPlayPage"
       >
         <!-- v-lazy="coverImgUrl" -->
-        <img class="play-bar-image" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+        <img class="play-bar-image" :src="song.picUrl? song.picUrl : 'https://img.yzcdn.cn/vant/cat.jpeg'"/>
       </div>
       <p class="play-bar-text">{{ song.name }}</p>
       <!-- :src="playing ? iconPause : iconPlay"  @touchend="tapButton" -->
