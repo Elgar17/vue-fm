@@ -5,6 +5,8 @@ export default {
         playPageShow: false,
         // 控制跳转搜索页面是隐藏 tab
         hiddenTab: true,
+        // 控制 songlist 页面展示时隐藏头部
+        showSonglist: true,
     },
     mutations: {
         // 控制切换播放页面与地下的 play-bar的状态
@@ -14,6 +16,9 @@ export default {
         hiddenTab(state){
             state.hiddenTab = !state.hiddenTab;
         },
+        reshowSonglist(state){
+            state.showSonglist = !state.showSonglist;
+        }
     },
     actions: {
     }

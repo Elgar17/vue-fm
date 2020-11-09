@@ -42,7 +42,7 @@ export default {
       }).then((res) => {
         if (res.status == 200) {
           this.$store.dispatch("aSetUrl", res.data.data[0].url);
-          this.$store.dispatch("aSetSong", {name: name, artis: art,picUrl:picUrl});
+          this.$store.dispatch("aSetSong", {name: name, artis: art,picUrl:picUrl,Url:res.data.data[0].url});
         }
       });
     },

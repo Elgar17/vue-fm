@@ -16,23 +16,35 @@ export default {
         },
         setUrl(state,url){
             state.playUrl = url;
+            // state.playList.push(url)
         },
         setSong(state,song){
             state.song = song;
+            state.playList.push(song)
         },
         setPlaying(state,status){
             state.playing = status;
+        },
+        addSong(state,url){
+            state.playList.push(url)
+        },
+        deleteSong(state,index){
+            // 删除数组中的元素
+            state.playList = state.playList.splice(0,index).concat(state.playList.splice(index)) 
         }
     },
     actions: {
         setSearchList(context,step){
             context.commit('setSearchList',step);
         },
-        aSetUrl(context,step){
-            context.commit('setUrl',step);
+        aSetUrl(context,url){
+            context.commit('setUrl',url);
         },
         aSetSong(context,step){
             context.commit('setSong',step)
+        },
+        aAddSong(context,url){
+            context.commit("addSong",url)
         }
     }
 }

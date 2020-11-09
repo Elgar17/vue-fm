@@ -2,7 +2,7 @@
   <div>
     <audio ref="audio" :src="playUrl" @timeupdate="pdateTime"></audio>
     <div class="play-box" v-show="$store.state.style.playPageShow">
-      <div class="icon-box" @touchstart="hidden">
+      <div class="icon-box" @touchstart="hidden" @click="hidden">
         <van-icon name="arrow-down" size="20" color="#ff4e4b" />
       </div>
       <div class="img-box">
@@ -10,7 +10,9 @@
           width="100%"
           fit="cover"
           height="300px"
-          :src="song.picUrl? song.picUrl : 'https://img.yzcdn.cn/vant/cat.jpeg'"
+          :src="
+            song.picUrl ? song.picUrl : 'https://img.yzcdn.cn/vant/cat.jpeg'
+          "
         />
       </div>
       <!-- 歌名 -->
@@ -39,11 +41,12 @@
 
       <!--  播放列表  -->
       <div id="play">
-        <div class="add">
+        <div class="add" @click="mess"> 
           <van-icon name="star-o" size="20" color="#ff4e4b" />
         </div>
-        <div class="left">
-          <img class="lastBtn" :src="lastBtn" />
+        <div class="left" @click="mess">
+          <!-- {{song}} -->
+          <img class="lastBtn"  :src="lastBtn" />
         </div>
         <div id="play-mu" @click="tapButton" class="play-mu">
           <van-icon
@@ -59,10 +62,10 @@
             color="#ff4e4b"
           />
         </div>
-        <div class="right">
+        <div class="right" @click="mess">
           <img class="nextBtn" :src="nextBtn" alt="" />
         </div>
-        <div class="share">
+        <div class="share" @click="mess">
           <van-icon name="share-o" size="20" color="#ff4e4b" />
         </div>
       </div>
@@ -80,7 +83,12 @@
         @click="showPlayPage"
       >
         <!-- v-lazy="coverImgUrl" -->
-        <img class="play-bar-image" :src="song.picUrl? song.picUrl : 'https://img.yzcdn.cn/vant/cat.jpeg'"/>
+        <img
+          class="play-bar-image"
+          :src="
+            song.picUrl ? song.picUrl : 'https://img.yzcdn.cn/vant/cat.jpeg'
+          "
+        />
       </div>
       <p class="play-bar-text">{{ song.name }}</p>
       <!-- :src="playing ? iconPause : iconPlay"  @touchend="tapButton" -->
@@ -165,6 +173,10 @@ export default {
       }
       return `${mi}:${sec}`;
     },
+    mess(){
+      console.log(123)
+      this.$toast('小鹅在努力添加哦');
+    }
   },
   watch: {
     playUrl() {
@@ -179,6 +191,15 @@ export default {
         newPlaying ? audio.play() : audio.pause();
         this.duraction = audio.duration;
       });
+    },
+    currentTime(val) {
+      var audio = this.$refs.audio;
+      if (val == this.duraction) {
+        this.$nextTick(() => {
+          audio.currentTime = 0;
+          audio.play();
+        });
+      }
     },
   },
 };
@@ -272,7 +293,7 @@ export default {
   justify-content: space-around;
 }
 .lastBtn,
-.nextBtn{
+.nextBtn {
   height: 22px;
   width: 22px;
 }

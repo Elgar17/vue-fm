@@ -10,7 +10,6 @@
         <img class="sw-img" v-lazy="item.pic" />
       </van-swipe-item>
     </van-swipe>
-
     <h2>最新音乐</h2>
     <NewSong />
     <h2>推荐歌单</h2>

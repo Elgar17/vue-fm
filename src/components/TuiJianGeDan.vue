@@ -1,19 +1,16 @@
 <template>
   <div class="list-box">
     <van-grid :border="false" :column-num="3" :gutter="10">
-      <van-grid-item text="误入秘密花园">
-        <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" />
-        <span>误入秘密花园</span>
-      </van-grid-item>
-
-      <van-grid-item @click="toList">
-        <van-image :src="playList.coverImgUrl" />
-        <span>{{ playList.name }}</span>
-      </van-grid-item>
-
-      <van-grid-item @click="toList">
-        <van-image :src="playList.coverImgUrl" />
-        <span>{{ playList.name }}</span>
+      <van-grid-item
+        @click="toList(item.id)"
+        v-for="(item, index) in playList"
+        :key="index"
+        text="误入秘密花园"
+      >
+        <van-image :src="item.picUrl" />
+        <span>{{
+          item.name.length > 14 ? item.name.slice(0, 13) + "..." : item.name
+        }}</span>
       </van-grid-item>
     </van-grid>
   </div>
@@ -28,26 +25,30 @@ export default {
     };
   },
   created() {
-    this.$http({
-      url: "/playlist/detail?id=944971889",
-      method: "get",
-    }).then((res) => {
-      this.playList = res.data.playlist;
-    });
+    this.getlist();
+    // this.$http({
+    //   url: "/playlist/detail?id=944971889",
+    //   method: "get",
+    // }).then((res) => {
+    //   this.playList = res.data.playlist;
+    // });
   },
   methods: {
-    toList() {
-      console.log(6);
+    getlist() {
       this.$http({
-        url: "/playlist/subscribers",
-        method: "get",
+        url: "/personalized",
         params: {
-          id: 944971889,
+          limit: 9,
         },
       }).then((res) => {
-        console.log(res);
-        this.playList = res.data.playlist;
+        if (res.data.code == 200) {
+          this.playList = res.data.result;
+        }
       });
+    },
+    toList(id) {
+      this.$router.push({ path: "/SongList", query: { id } });
+      this.$store.commit("reshowSonglist");
     },
   },
 };

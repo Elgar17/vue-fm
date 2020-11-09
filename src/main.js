@@ -14,6 +14,12 @@ Vue.use(Icon);
 Vue.use(Search)
 Vue.use(Divider)
 
+import { Toast } from 'vant'; 
+Vue.use(Toast);
+
+import { Tag } from 'vant';
+Vue.use(Tag);
+
 import { Tab, Tabs } from 'vant';
 Vue.use(Tab);
 Vue.use(Tabs);

@@ -50,8 +50,8 @@ export default {
     },
     paly(data) {
       this.$store.commit("changePlayBar");
-      console.log(data.rul);
-      this.$store.dispatch('aSetSong',{name: data.name, artis:data.artists[0].name})
+      // console.log(data.rul);
+      // this.$store.dispatch('aSetSong',{name: data.name, artis:data.artists[0].name,Url:res.data.data[0].url})
       this.$http({
         url: "/song/url",
         method: "get",
@@ -60,7 +60,10 @@ export default {
         },
       }).then((res) => {
         if (res.status == 200) {
-          this.$store.dispatch('aSetUrl',res.data.data[0].url)
+          this.$store.dispatch('aSetUrl',res.data.data[0].url);
+          // console.log(item)
+          //,picUrl:res.data.data[0].url
+          this.$store.dispatch('aSetSong',{name: data.name, artis:data.artists[0].name})
         }
       });
     },

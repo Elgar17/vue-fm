@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <Headers />
+    <Headers v-show="$store.state.style.showSonglist" />
     <!-- <van-divider /> -->
 
-    <div id="nav" v-show="$store.state.style.hiddenTab">
+    <div id="nav" v-show="$store.state.style.showSonglist && $store.state.style.hiddenTab" >
       <router-link class="tab" tag="div" to="/">推荐</router-link>
       <router-link class="tab" tag="div" to="/about">热评</router-link>
     </div>
