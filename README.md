@@ -23,11 +23,11 @@
 ## 页面效果
 
 | 主页面 | 播放器 | 歌单详情 |
-| ---- | ---- | ---- | ---- |
+| ---- | ---- | ---- | 
 | ![home](./img/home.png) | ![home](./img/play.png) | ![home](./img/playList.png) |
 
 
 
 | 搜索 | 评论 | 播放记录 |
-| ---- |---- | ---- |---- |
+| ---- |---- | ---- |
 | ![home](./img/search.png) | ![home](./img/hotcom.png)| ![home](./img/list.png) |
