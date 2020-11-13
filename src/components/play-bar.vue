@@ -41,11 +41,11 @@ export default {
   },
   methods: {
     showPlayPage() {
-      console.log("shouPlayPage");
+      // console.log("shouPlayPage");
       this.$store.commit('changePlayBar')
     },
     tapButton() {
-      console.log("tapButton");
+      // console.log("tapButton");
     },
   },
 };

@@ -48,18 +48,7 @@ export default {
       });
     },
 
-    // get newSong
     getNewSong() {
-      // this.$http({
-      //   url: "personalized/newsong",
-      //   method: "get",
-      // }).then((res) => {
-      //   console.log(res.data)
-      //   if (res.data.code == 200) {
-      //     this.newSong = res.data.result;
-      //     console.log(this.newSong)
-      //   }
-      // });
     },
   },
 };

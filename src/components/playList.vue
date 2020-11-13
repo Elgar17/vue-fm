@@ -27,7 +27,7 @@ export default {
   },
   methods:{
     play(item){
-      console.log(item)
+      // console.log(item)
       // this.$http({
       //   url: "/song/url",
       //   method: "get",

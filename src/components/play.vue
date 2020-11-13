@@ -160,6 +160,7 @@ export default {
         this.$refs.jindutiao.offsetWidth * (this.currentTime / audio.duration)
       )}px`;
       this.currentTime = e.target.currentTime;
+      this.duraction = audio.duration;
     },
     format(interval) {
       interval = interval | 0;
@@ -174,7 +175,6 @@ export default {
       return `${mi}:${sec}`;
     },
     mess(){
-      console.log(123)
       this.$toast('小鹅在努力添加哦');
     }
   },

@@ -2,12 +2,16 @@
 
 ## 简介
 
-基于 vue 的开的单页面应用 —— 音乐app。
+基于 vue 的开的单页面应用 —— 音乐app（移动端），[点这里预览](https://elgara.gitee.io/demo/vv/#/)。
 
-项目在开发中···
+功能：
+- 搜索歌曲
+- 歌曲播放页面：mini组件, 播放组件，播放记录页面
+- 主页：轮播图，最新音乐，推荐歌单，歌单详情页面
+- 热评：热门评论
+
 
 使用到的技术：
-
 - vue（框架）
 - vue-cli（脚手架）
 - vue-router（路由）
@@ -16,25 +20,12 @@
 - less（css 预处理语言）
 
 
-## Project setup
-```
-npm install
-```
+## 页面效果
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+|主页面| 播放器|歌单详情|
+|----|----|----|----|
+|![home](./img/home.png)|![home](./img/play.png)|![home](./img/playList.png)|
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+|搜索| 评论|播放记录|
+|----|----|----|----|
+|![home](./img/search.png)|![home](./img/hotcom.png)|![home](./img/list.png)|

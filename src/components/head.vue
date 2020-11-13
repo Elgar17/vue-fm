@@ -45,7 +45,6 @@ export default {
         }).then((res) => {
           if (res.data.code === 200) {
             this.$store.dispatch("setSearchList", res.data.result.songs);
-            console.log(this.$store.state.play.searchList);
             //this.list = res.data.result.songs
           }
         });

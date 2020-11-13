@@ -9,7 +9,7 @@
     </div>
     <router-view />
 
-    <Play />
+    <Play /> 
   </div>
 </template>
 
